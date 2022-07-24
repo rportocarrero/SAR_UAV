@@ -3,8 +3,13 @@
 FROM ubuntu:focal 
 
 # install sudo command
-RUN apt-get update
-RUN apt-get -y install sudo
+RUN apt-get -y update && apt-get -y upgrade
+RUN apt-get -y install sudo \
+    cmake \
+    g++ \
+    git
+RUN export CC=/usr/bin/gcc
+RUN export CXX=/usr/bin/g++
 
 # Select and Update OS
 RUN sudo apt update
