@@ -2,12 +2,20 @@
 # pull from ubuntu
 FROM ubuntu:focal 
 
-# install sudo command
+# update packages
 RUN apt-get -y update && apt-get -y upgrade
+
+# install timezone data
+RUN apt-get install -yq tzdata && \
+    ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime && \
+    dpkg-reconfigure -f noninteratctive tzdata
+
+# install needed programsdocker 
 RUN apt-get -y install sudo \
     cmake \
     g++ \
-    git
+    git \
+    python
 RUN export CC=/usr/bin/gcc
 RUN export CXX=/usr/bin/g++
 

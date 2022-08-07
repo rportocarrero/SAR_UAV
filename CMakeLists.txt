@@ -20,5 +20,7 @@ add_subdirectory(test)
 # Source Definitions
 
 include_directories("${PROJECT_SOURCE_DIR}/include")
-file(GLOB sources "${PROJECT_SOURCE_DIR}/src/*.c")
+file(GLOB sources 
+    "${PROJECT_SOURCE_DIR}/include/test_module/*.h"
+    "${PROJECT_SOURCE_DIR}/src/*.c")
 add_executable(test_module ${sources})
